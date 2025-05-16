@@ -35,4 +35,4 @@ jobs:
         with:
           folder: storybook-static
           branch: gh-pages
-          clean: true 
+          clean: true
