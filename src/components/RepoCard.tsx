@@ -13,6 +13,8 @@ interface RepoCardProps {
   showForks?: boolean;
   showLanguage?: boolean;
   showLastUpdated?: boolean;
+  showAvatar?: boolean;
+  avatarUrl?: string;
   className?: string;
   cardClassName?: string;
   onRepoClick?: (repo: Repository) => void;
@@ -26,6 +28,8 @@ export const RepoCard: React.FC<RepoCardProps> = ({
   showForks = true,
   showLanguage = true,
   showLastUpdated = true,
+  showAvatar = false,
+  avatarUrl,
   className = '',
   cardClassName = '',
   onRepoClick,
@@ -36,6 +40,24 @@ export const RepoCard: React.FC<RepoCardProps> = ({
     } else {
       window.open(repository.html_url, '_blank', 'noopener,noreferrer');
     }
+  };
+
+  const renderIcon = () => {
+    console.log('Avatar props:', { showAvatar, avatarUrl });
+    // Always show avatar if showAvatar is true, regardless of avatarUrl
+    if (showAvatar) {
+      // If avatarUrl is provided, use it
+      if (avatarUrl) {
+        return <img src={avatarUrl} alt="User avatar" className="repo-card__avatar" />;
+      }
+      // If no avatarUrl but showAvatar is true, try to extract owner from full_name
+      // and use GitHub's avatar API
+      const ownerName = repository.full_name.split('/')[0];
+      const githubAvatarUrl = `https://github.com/${ownerName}.png`;
+      return <img src={githubAvatarUrl} alt="Repository owner" className="repo-card__avatar" />;
+    }
+    // Default to repo icon
+    return <RepoIcon className="repo-card__icon" />;
   };
 
   return (
@@ -51,29 +73,37 @@ export const RepoCard: React.FC<RepoCardProps> = ({
       }}
       aria-label={`Repository: ${repository.name}`}
     >
+      {showStars && (
+        <div className="repo-card__star-count">
+          <StarIcon />
+          <span>{repository.stargazers_count.toLocaleString()}</span>
+        </div>
+      )}
+      
       <div className="repo-card__content">
-        <RepoIcon className="repo-card__icon" />
+        {renderIcon()}
         <div className="repo-card__body">
-          {showName && (
-            <h3 className="repo-card__name" title={repository.name}>
-              {repository.name}
-            </h3>
-          )}
+          <div className="repo-card__name-container">
+            {showName ? (
+              <h3 className="repo-card__name" title={repository.name}>
+                {repository.name}
+              </h3>
+            ) : (
+              <div className="repo-card__name-placeholder"></div>
+            )}
+          </div>
           
-          {showDescription && repository.description && (
-            <p className="repo-card__description" title={repository.description}>
-              {repository.description}
-            </p>
-          )}
+          <div className="repo-card__description-container">
+            {showDescription && repository.description ? (
+              <p className="repo-card__description" title={repository.description}>
+                {repository.description}
+              </p>
+            ) : (
+              <div className="repo-card__description-placeholder"></div>
+            )}
+          </div>
           
           <div className="repo-card__stats">
-            {showStars && (
-              <StatBadge
-                count={repository.stargazers_count}
-                icon={<StarIcon />}
-              />
-            )}
-            
             {showForks && (
               <StatBadge
                 count={repository.forks_count}
@@ -81,8 +111,10 @@ export const RepoCard: React.FC<RepoCardProps> = ({
               />
             )}
             
-            {showLanguage && repository.language && (
+            {showLanguage && repository.language ? (
               <LanguageBadge language={repository.language} />
+            ) : (
+              <div className="repo-card__language-placeholder"></div>
             )}
             
             {showLastUpdated && (

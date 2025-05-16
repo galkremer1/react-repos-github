@@ -35,6 +35,8 @@ export interface BaseRepoProps {
   showForks?: boolean;
   showLanguage?: boolean;
   showLastUpdated?: boolean;
+  showAvatar?: boolean;
+  avatarUrl?: string;
   
   // Styling options
   className?: string;

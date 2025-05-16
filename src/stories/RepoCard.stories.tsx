@@ -36,6 +36,11 @@ const meta = {
   component: RepoCard,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'Repository card component that displays GitHub repository information. Clicking on the card will open the repository in a new window.'
+      }
+    }
   },
   tags: ['autodocs'],
   argTypes: {
@@ -85,5 +90,19 @@ export const CustomStyling: Story = {
     showLanguage: true,
     showLastUpdated: true,
     cardClassName: 'custom-card',
+  },
+};
+
+export const WithAvatar: Story = {
+  args: {
+    repository: mockRepo as any,
+    showName: true,
+    showDescription: true,
+    showStars: true,
+    showForks: true,
+    showLanguage: true,
+    showLastUpdated: true,
+    showAvatar: true,
+    avatarUrl: 'https://avatars.githubusercontent.com/u/69631?v=4', // Facebook's GitHub avatar
   },
 }; 

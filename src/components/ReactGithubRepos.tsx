@@ -129,7 +129,17 @@ export const ReactGithubRepos: React.FC<ReactGithubReposProps> = ({
           <RepoCard
             key={repo.id}
             repository={repo}
-            {...restProps}
+            showAvatar={restProps.showAvatar}
+            avatarUrl={restProps.avatarUrl}
+            showName={restProps.showName}
+            showDescription={restProps.showDescription}
+            showStars={restProps.showStars}
+            showForks={restProps.showForks}
+            showLanguage={restProps.showLanguage}
+            showLastUpdated={restProps.showLastUpdated}
+            className={restProps.className}
+            cardClassName={restProps.cardClassName}
+            onRepoClick={restProps.onRepoClick}
           />
         ))}
       </div>
