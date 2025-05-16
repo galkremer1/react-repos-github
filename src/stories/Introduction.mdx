@@ -1,0 +1,69 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction/Getting Started" />
+
+# React GitHub Repos
+
+A React component library for displaying GitHub repositories with various customization options.
+
+## Features
+
+- Display single or multiple GitHub repositories
+- Configurable display options (stars, forks, language, etc.)
+- Built-in sorting and filtering capabilities
+- Responsive grid layout
+- Pagination support
+- Accessible UI components
+- GitHub-like styling
+- Rate limit handling
+- Support for pre-fetched data
+
+## Installation
+
+```bash
+npm install react-github-repos
+# or
+yarn add react-github-repos
+```
+
+## Component Usage
+
+### ReactGithubRepo
+
+The `ReactGithubRepo` component displays a single GitHub repository.
+
+```jsx
+import { ReactGithubRepo } from 'react-github-repos';
+
+function App() {
+  return (
+    <ReactGithubRepo 
+      user="facebook" 
+      repo="react" 
+    />
+  );
+}
+```
+
+### ReactGithubRepos
+
+The `ReactGithubRepos` component displays multiple GitHub repositories in a grid layout.
+
+```jsx
+import { ReactGithubRepos } from 'react-github-repos';
+
+function App() {
+  return (
+    <ReactGithubRepos 
+      user="facebook"
+      enableSorting={true}
+      enableFiltering={true}
+      itemsPerPage={6}
+    />
+  );
+}
+```
+
+## Explore Examples
+
+Check out the component examples in the sidebar to see different ways to use and configure the components. 
