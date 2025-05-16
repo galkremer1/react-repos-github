@@ -2,6 +2,7 @@
   "name": "react-github-repos",
   "version": "1.0.0",
   "description": "React component library for displaying GitHub repositories",
+  "homepage": "https://galkremer1.github.io/react-github-repos",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -11,7 +12,9 @@
   "scripts": {
     "build": "tsc && cp src/styles.css dist/",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "predeploy": "npm run build-storybook",
+    "deploy": "gh-pages -d storybook-static --dotfiles"
   },
   "keywords": [
     "react",
@@ -35,6 +38,7 @@
     "@storybook/test": "^8.6.14",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
+    "gh-pages": "^6.3.0",
     "storybook": "^8.6.14",
     "tslib": "^2.8.1",
     "typescript": "^5.8.3"
