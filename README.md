@@ -77,6 +77,19 @@ This will launch Storybook at http://localhost:6006 where you can:
 - Adjust component props in real-time
 - See documentation and examples
 
+You can also view the deployed Storybook at: [https://galkremer1.github.io/react-github-repos](https://galkremer1.github.io/react-github-repos)
+
+## Deployment
+
+This project uses GitHub Actions to automatically deploy the Storybook documentation to GitHub Pages whenever changes are pushed to the main branch.
+
+The workflow does the following:
+- Builds the Storybook site
+- Deploys it to the gh-pages branch
+- Makes it available at [https://galkremer1.github.io/react-github-repos](https://galkremer1.github.io/react-github-repos)
+
+To make changes to the deployment process, edit the workflow file at `.github/workflows/deploy.yml`.
+
 ## Components
 
 ### `<ReactGithubRepo />`
