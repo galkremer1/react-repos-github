@@ -12,7 +12,7 @@ export const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({ size = 'medi
   }[size];
   
   return (
-    <div className="loading-indicator">
+    <div className="loading-indicator" data-testid="loading-indicator">
       <div className="loading-spinner" style={sizeClass}></div>
     </div>
   );

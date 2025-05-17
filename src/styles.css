@@ -22,6 +22,12 @@
   position: relative;
 }
 
+/* Adjust height for minimal display cards */
+.repo-card--minimal {
+  max-height: fit-content;
+  min-height: 100px;
+}
+
 .repo-card:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
@@ -86,6 +92,11 @@
   margin: 4px 0;
 }
 
+/* Ensure description container doesn't take space in minimal mode */
+.repo-card--minimal .repo-card__description-container {
+  display: none;
+}
+
 .repo-card__description-placeholder {
   height: 40px;
 }
@@ -128,6 +139,38 @@
   height: 20px;
   align-items: center;
   gap: 24px;
+}
+
+/* Style for minimal display mode with vertical stats */
+.repo-card__stats--minimal {
+  flex-direction: column;
+  align-items: flex-start;
+  height: auto;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+  justify-content: flex-start;
+}
+
+/* Adjust spacing and alignment for different stat elements in minimal mode */
+.repo-card__stats--minimal .repo-card__stat,
+.repo-card__stats--minimal .language-badge,
+.repo-card__stats--minimal .stat-badge {
+  margin-bottom: 0;
+  justify-content: flex-start;
+  width: 100%;
+  padding-left: 0;
+}
+
+/* Add margin between items */
+.repo-card__stats--minimal > * {
+  margin-bottom: 8px;
+}
+
+/* If only one item is shown, no need for extra margin */
+.repo-card__stats--minimal > *:only-child {
+  margin-bottom: 0;
 }
 
 .repo-card__stats-left, .repo-card__stats-right {
@@ -194,17 +237,22 @@
   color: #f1e05a;
 }
 
+/* Style specific star count for minimal mode */
+.repo-card--minimal .repo-card__star-count {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
 /* Grid layout for multiple repositories */
 .repo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 16px;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding: 16px 16px 16px 16px; /* top right bottom left */
   flex: 1;
   overflow-y: auto;
   max-height: calc(100% - 60px); /* Leave space for pagination */
-  padding-bottom: 16px;
 }
 
 /* Loading indicator */
@@ -259,6 +307,11 @@
   flex-direction: column;
 }
 
+/* Add extra top padding when filtering/sorting is disabled */
+.react-github-repos--no-controls .repo-grid {
+  padding-top: 24px;
+}
+
 .pagination__button {
   padding: 8px 12px;
   margin: 0 4px;
@@ -311,4 +364,5 @@
   border-radius: 4px;
   background-color: white;
   font-size: 14px;
-} 
+}
+

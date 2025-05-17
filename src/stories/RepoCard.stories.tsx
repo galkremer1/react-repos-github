@@ -68,17 +68,6 @@ export const Default: Story = {
   },
 };
 
-export const MinimalInfo: Story = {
-  args: {
-    repository: mockRepo as any,
-    showName: true,
-    showDescription: false,
-    showStars: true,
-    showForks: false,
-    showLanguage: true,
-    showLastUpdated: false,
-  },
-};
 
 export const CustomStyling: Story = {
   args: {

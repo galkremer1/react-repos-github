@@ -40,18 +40,6 @@ export const Default: Story = {
   },
 };
 
-export const MinimalDisplay: Story = {
-  args: {
-    user: 'facebook',
-    repo: 'react',
-    showName: true,
-    showDescription: false,
-    showStars: true,
-    showForks: false,
-    showLanguage: false,
-    showLastUpdated: false,
-  },
-};
 
 export const TypeScriptRepo: Story = {
   args: {

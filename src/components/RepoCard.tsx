@@ -43,7 +43,6 @@ export const RepoCard: React.FC<RepoCardProps> = ({
   };
 
   const renderIcon = () => {
-    console.log('Avatar props:', { showAvatar, avatarUrl });
     // Always show avatar if showAvatar is true, regardless of avatarUrl
     if (showAvatar) {
       // If avatarUrl is provided, use it
@@ -60,9 +59,13 @@ export const RepoCard: React.FC<RepoCardProps> = ({
     return <RepoIcon className="repo-card__icon" />;
   };
 
+  // Determine if we're in minimal display mode
+  // Check if description is hidden, as this is the main indicator of minimal mode
+  const isMinimalMode = !showDescription;
+  
   return (
     <div
-      className={`repo-card ${cardClassName}`}
+      className={`repo-card ${isMinimalMode ? 'repo-card--minimal' : ''} ${cardClassName}`}
       onClick={handleRepoClick}
       role="button"
       tabIndex={0}
@@ -93,17 +96,19 @@ export const RepoCard: React.FC<RepoCardProps> = ({
             )}
           </div>
           
-          <div className="repo-card__description-container">
-            {showDescription && repository.description ? (
-              <p className="repo-card__description" title={repository.description}>
-                {repository.description}
-              </p>
-            ) : (
-              <div className="repo-card__description-placeholder"></div>
-            )}
-          </div>
+          {showDescription && (
+            <div className="repo-card__description-container">
+              {repository.description ? (
+                <p className="repo-card__description" title={repository.description}>
+                  {repository.description}
+                </p>
+              ) : (
+                <div className="repo-card__description-placeholder"></div>
+              )}
+            </div>
+          )}
           
-          <div className="repo-card__stats">
+          <div className={`repo-card__stats ${isMinimalMode ? 'repo-card__stats--minimal' : ''}`}>
             {showForks && (
               <StatBadge
                 count={repository.forks_count}
@@ -128,4 +133,4 @@ export const RepoCard: React.FC<RepoCardProps> = ({
       </div>
     </div>
   );
-}; 
+};
