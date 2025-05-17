@@ -78,8 +78,12 @@ export const ReactGithubRepos: React.FC<ReactGithubReposProps> = ({
   // Handle page change
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    // Scroll to top of container
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Create a ref to access the repo grid container
+    const repoGridContainer = document.querySelector('.repo-grid');
+    // Scroll the container to the top instead of the window
+    if (repoGridContainer) {
+      repoGridContainer.scrollTop = 0;
+    }
   };
 
   // Handle sort option change
