@@ -110,7 +110,7 @@ export const ReactGithubRepos: React.FC<ReactGithubReposProps> = ({
   }
 
   return (
-    <div className={`react-github-repos ${!enableFiltering && !enableSorting ? 'react-github-repos--no-controls' : ''} ${restProps.className || ''}`}>
+    <div className={`eact-repos-github ${!enableFiltering && !enableSorting ? 'eact-repos-github--no-controls' : ''} ${restProps.className || ''}`}>
       {(enableFiltering || enableSorting) && (
         <FilterSort
           onSortChange={handleSortChange}
