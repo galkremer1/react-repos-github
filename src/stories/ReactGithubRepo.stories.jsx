@@ -1,4 +1,3 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import { ReactGithubRepo } from '../components/ReactGithubRepo';
 import '../styles.css';
 
@@ -21,13 +20,12 @@ const meta = {
     showLanguage: { control: 'boolean' },
     showLastUpdated: { control: 'boolean' },
   },
-} satisfies Meta<typeof ReactGithubRepo>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Default: Story = {
+export const Default = {
   args: {
     user: 'facebook',
     repo: 'react',
@@ -41,7 +39,7 @@ export const Default: Story = {
 };
 
 
-export const TypeScriptRepo: Story = {
+export const TypeScriptRepo = {
   args: {
     user: 'microsoft',
     repo: 'typescript',

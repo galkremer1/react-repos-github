@@ -1,4 +1,3 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import { ReactGithubRepos } from '../components/ReactGithubRepos';
 import '../styles.css';
 
@@ -34,12 +33,11 @@ const meta = {
       options: ['asc', 'desc']
     },
   },
-} satisfies Meta<typeof ReactGithubRepos>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = {
   args: {
     user: 'facebook',
     showName: true,
@@ -56,7 +54,7 @@ export const Default: Story = {
   },
 };
 
-export const SpecificRepos: Story = {
+export const SpecificRepos = {
   args: {
     user: 'facebook',
     repos: ['react', 'react-native', 'jest', 'flux', 'create-react-app', 'relay'],
@@ -72,7 +70,7 @@ export const SpecificRepos: Story = {
   },
 };
 
-export const MinimalWithFewerItems: Story = {
+export const MinimalWithFewerItems = {
   args: {
     user: 'facebook',
     showName: true,
@@ -87,7 +85,7 @@ export const MinimalWithFewerItems: Story = {
   },
 };
 
-export const WithAvatars: Story = {
+export const WithAvatars = {
   args: {
     user: 'facebook',
     repos: ['react', 'react-native', 'jest', 'flux', 'create-react-app', 'relay'],

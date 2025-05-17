@@ -1,5 +1,4 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
 import { RepoCard } from '../components/RepoCard';
 import '../styles.css';
 
@@ -51,14 +50,13 @@ const meta = {
     showLanguage: { control: 'boolean' },
     showLastUpdated: { control: 'boolean' },
   },
-} as Meta<typeof RepoCard>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = {
   args: {
-    repository: mockRepo as any,
+    repository: mockRepo,
     showName: true,
     showDescription: true,
     showStars: true,
@@ -69,9 +67,9 @@ export const Default: Story = {
 };
 
 
-export const CustomStyling: Story = {
+export const CustomStyling = {
   args: {
-    repository: mockRepo as any,
+    repository: mockRepo,
     showName: true,
     showDescription: true,
     showStars: true,
@@ -82,9 +80,9 @@ export const CustomStyling: Story = {
   },
 };
 
-export const WithAvatar: Story = {
+export const WithAvatar = {
   args: {
-    repository: mockRepo as any,
+    repository: mockRepo,
     showName: true,
     showDescription: true,
     showStars: true,
