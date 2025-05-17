@@ -5,9 +5,9 @@ A React component library for displaying GitHub repositories with various custom
 ## Installation
 
 ```bash
-npm install react-github-repos
+npm install react-repos-github
 # or
-yarn add react-github-repos
+yarn add react-repos-github
 ```
 
 ## Features
@@ -27,7 +27,7 @@ yarn add react-github-repos
 ### Display a Single Repository
 
 ```jsx
-import { ReactGithubRepo } from 'react-github-repos';
+import { ReactGithubRepo } from 'react-repos-github';
 
 function App() {
   return (
@@ -42,7 +42,7 @@ function App() {
 ### Display Multiple Repositories
 
 ```jsx
-import { ReactGithubRepos } from 'react-github-repos';
+import { ReactGithubRepos } from 'react-repos-github';
 
 function App() {
   return (
@@ -62,8 +62,8 @@ The library includes a Storybook setup to help you explore and test the componen
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/react-github-repos.git
-cd react-github-repos
+git clone https://github.com/yourusername/react-repos-github.git
+cd react-repos-github
 
 # Install dependencies
 npm install
@@ -77,7 +77,7 @@ This will launch Storybook at http://localhost:6006 where you can:
 - Adjust component props in real-time
 - See documentation and examples
 
-You can also view the deployed Storybook at: [https://galkremer1.github.io/react-github-repos](https://galkremer1.github.io/react-github-repos)
+You can also view the deployed Storybook at: [https://galkremer1.github.io/react-repos-github](https://galkremer1.github.io/react-repos-github)
 
 ## Deployment
 
@@ -86,7 +86,7 @@ This project uses GitHub Actions to automatically deploy the Storybook documenta
 The workflow does the following:
 - Builds the Storybook site
 - Deploys it to the gh-pages branch
-- Makes it available at [https://galkremer1.github.io/react-github-repos](https://galkremer1.github.io/react-github-repos)
+- Makes it available at [https://galkremer1.github.io/react-repos-github](https://galkremer1.github.io/react-repos-github)
 
 To make changes to the deployment process, edit the workflow file at `.github/workflows/deploy.yml`.
 
@@ -149,7 +149,7 @@ Displays multiple GitHub repositories in a grid layout.
 ### Using Pre-fetched Data
 
 ```jsx
-import { ReactGithubRepos } from 'react-github-repos';
+import { ReactGithubRepos } from 'react-repos-github';
 
 function App() {
   const repoData = [
@@ -182,7 +182,7 @@ function App() {
 The library also exports hooks for direct access to the GitHub data:
 
 ```jsx
-import { useGithubRepo, useGithubRepos } from 'react-github-repos';
+import { useGithubRepo, useGithubRepos } from 'react-repos-github';
 
 function CustomComponent() {
   const { repository, loading, error } = useGithubRepo({ 
