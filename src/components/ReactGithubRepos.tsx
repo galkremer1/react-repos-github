@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { ReactGithubReposProps, Repository, SortOption, SortDirection } from '../types';
 import { useGithubRepos } from '../hooks/useGithubRepos';
 import { RepoCard } from './RepoCard';
@@ -21,6 +21,9 @@ export const ReactGithubRepos: React.FC<ReactGithubReposProps> = ({
   onError,
   ...restProps
 }) => {
+  // Create ref for the repo grid
+  const repoGridRef = useRef<HTMLDivElement>(null);
+  
   // States for filtering and pagination
   const [filter, setFilter] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -78,11 +81,9 @@ export const ReactGithubRepos: React.FC<ReactGithubReposProps> = ({
   // Handle page change
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    // Create a ref to access the repo grid container
-    const repoGridContainer = document.querySelector('.repo-grid');
-    // Scroll the container to the top instead of the window
-    if (repoGridContainer) {
-      repoGridContainer.scrollTop = 0;
+    // Scroll the container to the top using the ref
+    if (repoGridRef.current) {
+      repoGridRef.current.scrollTop = 0;
     }
   };
 
@@ -128,7 +129,7 @@ export const ReactGithubRepos: React.FC<ReactGithubReposProps> = ({
         />
       )}
       
-      <div className="repo-grid">
+      <div ref={repoGridRef} className="repo-grid">
         {currentRepositories.map((repo) => (
           <RepoCard
             key={repo.id}
