@@ -2,6 +2,8 @@
 
 A React component library for displaying GitHub repositories with various customization options.
 
+[![npm version](https://img.shields.io/npm/v/react-repos-github.svg)](https://www.npmjs.com/package/react-repos-github)
+
 ## Installation
 
 ```bash
