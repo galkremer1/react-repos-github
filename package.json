@@ -1,6 +1,6 @@
 {
   "name": "react-repos-github",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "React component library for displaying GitHub repositories",
   "homepage": "https://galkremer1.github.io/react-repos-github",
   "main": "dist/index.js",
