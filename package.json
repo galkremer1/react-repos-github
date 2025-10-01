@@ -27,7 +27,7 @@
   "author": "Gal Kremer",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.9.0"
+    "axios": "^1.12.2"
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",
